@@ -27,7 +27,9 @@
               <img src={this.props.image} alt="Bloc Logo"/>
               <h2>Current program: {this.props.label}</h2>
                 <h3>Current week: {this.state.number}</h3>
+                <h4>Current Checkpoint: {this.props.label}</h4>
               <p>Current Date: {this.props.date.toLocaleDateString()}</p>
+              <div id="container"></div>
             </div>
           );
         }
@@ -41,6 +43,9 @@
       Counter.defaultProps = {
         label: "Web Developer Track"
       }
+      Counter.defaultProps = {
+        label: "Props and State"
+      }
 
       ReactDOM.render(
         <Counter
@@ -48,6 +53,30 @@
           image={info.image}/>,document.getElementById('app')
       );
 
+class SecondExample extends React.Component {
+    
+    constructor(props) {
+      super(props);
+      this.state = {clicks: 0}
+    }
+    
+    handleClick() {
+      this.setState((prevState) => ({
+           clicks: prevState.clicks + 1
+        }));
+    }
+    
+    render() {
+      return <button onClick={this.handleClick.bind(this)}>Clicked {this.state.clicks} Times</button>
+
+    }
+    
+}
+
+ReactDOM.render(
+  <SecondExample />,
+  document.getElementById('container')
+);
     </script>
   </body>
 </html>
