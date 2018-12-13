@@ -17,24 +17,33 @@
          constructor(props){
            super(props);
            this.state = {
-             number: 1
+             number: 1,
+             count: 0,
            }
          }
- 
+updateCount(){
+  this.setState({
+  count: this.state.count+1
+})
+}
         render() {
           return (
             <div>
               <img src={this.props.image} alt="Bloc Logo"/>
               <h2>Current program: {this.props.label}</h2>
                 <h3>Current week: {this.state.number}</h3>
+                <h4>Current count: {this.state.count}</h4> 
+                <button onClick={this.updateCount.bind(this)}>click me</button>
               <p>Current Date: {this.props.date.toLocaleDateString()}</p>
+              <p>Current Time: {this.props.time}</p>
             </div>
           );
         }
       }
 
       const info = {
-        date: new Date(),
+        date: new Date(), 
+        time: new Date().getHours(),
         image: 'https://avatars0.githubusercontent.com/u/1441485?v=4&s=280',
       }
 
@@ -45,6 +54,7 @@
       ReactDOM.render(
         <Counter
           date={info.date}
+          time={info.time}
           image={info.image}/>,document.getElementById('app')
       );
 
