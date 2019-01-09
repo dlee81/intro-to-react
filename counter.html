@@ -20,6 +20,21 @@
              count: 0,
            }
          }
+
+
+        increment(event) {
+          this.setState({
+            number: this.state.number + 1
+          })
+        }
+ 
+        decrement(event) {
+          this.setState({
+            number: Math.max(1, this.state.number - 1)
+          })
+        }
+ 
+
 updateCount(){
   this.setState({
   count: this.state.count+1
@@ -32,6 +47,8 @@ updateCount(){
               <h2>Current program: {this.props.label}</h2>
                 <h3>Current week: {this.state.number}</h3>
                 <h4>Current count: {this.state.count}</h4> 
+                <button onClick={this.increment.bind(this)}>Increment</button> 
+                <button onClick={this.decrement.bind(this)}>Decrement</button>
                 <button onClick={this.updateCount.bind(this)}>click me</button>
               <p>Current Date: {this.props.date.toLocaleDateString()}</p>
               <p>Current Time: {this.props.time}</p>
